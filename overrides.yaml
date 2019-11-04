@@ -1,5 +1,5 @@
 Master:
-  ImageTag: lts-alpine
+  tag: lts-alpine
   ServiceType: NodePort
   InstallPlugins:
     - kubernetes:1.2
