@@ -1,4 +1,4 @@
-Master:
+master:
   tag: lts-alpine
   ServiceType: NodePort
   InstallPlugins:
