@@ -2,9 +2,9 @@ master:
   tag: lts-alpine
   ServiceType: NodePort
   InstallPlugins:
-    - kubernetes:1.2
+    - kubernetes:1.21
     - workflow-aggregator:2.5
     - workflow-job:2.21
     - credentials-binding:1.15
-    - git:3.7.0
+    - git:3.9.0
   JavaOpts: "-Dhudson.slaves.NodeProvisioner.initialDelay=0 -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85"
