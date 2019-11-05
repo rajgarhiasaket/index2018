@@ -51,7 +51,7 @@ podTemplate(
         stage ('Deploy') {
             container ('helm') {
                 sh "/helm init --client-only --skip-refresh"
-                sh "/helm upgrade --install stable/kubernetes-dashboard --name dashboard-demo"
+                sh "/helm upgrade --install stable/kubernetes-dashboard"
                 //sh "/helm upgrade --install --wait --set image.repository=${repository},image.tag=${commitId} hello hello"
             }
         }
