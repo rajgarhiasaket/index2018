@@ -43,8 +43,7 @@ podTemplate(
         stage ('Docker') {
             container ('docker') {
                 //def registryIp = sh(script: 'getent hosts registry.kube-system | awk \'{ print $1 ; exit }\'', returnStdout: true).trim()
-                def registryIp ='PagalGuy@0216'
-                sh "docker login ${rajgarhiasaket} -u ${rajgarhiasaket} -p registryIp || errorExit "Docker login to ${DOCKER_REG} failed""
+                sh "docker login ${rajgarhiasaket} -u ${rajgarhiasaket} -p ${"PagalGuy@0216"} || errorExit "Docker login to ${DOCKER_REG} failed""
                 repository = "rajgarhiasaket/hello"
                 sh "docker build -t ${repository}:${commitId} ."
                 sh "docker push ${repository}:${commitId}"
