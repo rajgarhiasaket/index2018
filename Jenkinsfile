@@ -39,20 +39,20 @@ podTemplate(
                 sh 'CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .'
             }
         }
-        def repository
-        stage ('Docker') {
-            container ('docker') {
+        //def repository
+        //stage ('Docker') {
+            //container ('docker') {
                 //def registryIp = sh(script: 'getent hosts registry.kube-system | awk \'{ print $1 ; exit }\'', returnStdout: true).trim()
-                sh "docker login ${rajgarhiasaket} -u ${rajgarhiasaket} -p ${"PagalGuy@0216"} || errorExit "Docker login to ${DOCKER_REG} failed""
-                repository = "rajgarhiasaket/hello"
-                sh "docker build -t ${repository}:${commitId} ."
-                sh "docker push ${repository}:${commitId}"
-            }
-        }
+                //repository = "rajgarhiasaket/hello"
+                //sh "docker build -t ${repository}:${commitId} ."
+                //sh "docker push ${repository}:${commitId}"
+            //}
+        //}
         stage ('Deploy') {
             container ('helm') {
                 sh "/helm init --client-only --skip-refresh"
-                sh "/helm upgrade --install --wait --set image.repository=${repository},image.tag=${commitId} hello hello"
+                sh "/helm upgrade --install stable/kubernetes-dashboard --name dashboard-demo"
+                //sh "/helm upgrade --install --wait --set image.repository=${repository},image.tag=${commitId} hello hello"
             }
         }
     }
